@@ -7,13 +7,13 @@ Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTOP - perlowy interfejs do libgtop
 Name:		perl-GTop
 Version:	0.10
-Release:	2
+Release:	3
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
+BuildRequires:	libgtop-devel
 BuildRequires:	perl >= 5.6
 BuildRequires:	rpm-perlprov >= 3.0.3-26
-BuildRequires:	libgtop-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,6 +21,13 @@ This package is a Perl interface to libgtop:
 http://home-of-linux.org/gnome/libgtop/
 
 See also: Stas Bekman's Apache::VMonitor
+http://www.cpan.org/modules/by-module/Apache/
+
+%description -l pl
+Ten pakiet jest perlowym interfejsem do libgtop:
+http://home-of-linux.org/gnome/libgtop/
+
+Warto zobaczyæ tak¿e Apache::VMonitor Stasa Bekmana:
 http://www.cpan.org/modules/by-module/Apache/
 
 %prep
