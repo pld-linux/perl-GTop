@@ -6,12 +6,12 @@
 Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTop - perlowy interfejs do libgtop
 Name:		perl-GTop
-Version:	0.10
-Release:	5
+Version:	0.12
+Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
-# Source0-md5:	1920b8105003c46031000ae16e859a41
+# Source0-md5:	9c6ade812379d346e18a2354f39e82b0
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	perl-devel >= 5.6
 BuildRequires:	pkgconfig
@@ -59,11 +59,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %{perl_vendorarch}/*.pm
-%{perl_vendorarch}/GTop
-%dir %{perl_vendorarch}/auto/GTop
-%attr(755,root,root) %{perl_vendorarch}/auto/GTop/*.so
-%{perl_vendorarch}/auto/GTop/*.bs
-%dir %{perl_vendorarch}/auto/GTop/Server
-%attr(755,root,root) %{perl_vendorarch}/auto/GTop/Server/*.so
-%{perl_vendorarch}/auto/GTop/Server/*.bs
+%{perl_vendorarch}/%{pdir}
+%dir %{perl_vendorarch}/auto/%{pdir}
+%attr(755,root,root) %{perl_vendorarch}/auto/%{pdir}/*.so
+%{perl_vendorarch}/auto/%{pdir}/*.bs
+%dir %{perl_vendorarch}/auto/%{pdir}/Server
+%attr(755,root,root) %{perl_vendorarch}/auto/%{pdir}/Server/*.so
+%{perl_vendorarch}/auto/%{pdir}/Server/*.bs
 %{_mandir}/man3/*
