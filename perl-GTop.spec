@@ -7,7 +7,7 @@ Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTOP - perlowy interfejs do libgtop
 Name:		perl-GTop
 Version:	0.10
-Release:	4
+Release:	5
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
@@ -34,8 +34,8 @@ http://www.cpan.org/modules/by-module/Apache/
 %setup -q -n %{pdir}-%{version}
 
 %build
-  GTOP_LIB=`libgtop-config --libs | perl -we '<>=~/^-L(\S+)/&&print $1'` \
-  GTOP_INCLUDE=`libgtop-config --cflags | perl -we '<>=~/^-I(\S+)/&&print $1'` \
+  GTOP_LIB="-lgtop-2.0 -lgtop_sysdeps-2.0 -lgtop_common-2.0" \
+  GTOP_INCLUDE="/usr/include/libgtop-2.0" \
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor 
 
