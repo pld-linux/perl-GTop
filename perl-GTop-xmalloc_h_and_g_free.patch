@@ -1,0 +1,154 @@
+diff -ur GTop-0.12/GTop.xs GTop-0.12.new/GTop.xs
+--- GTop-0.12/GTop.xs	2003-12-04 08:43:05.000000000 +0100
++++ GTop-0.12.new/GTop.xs	2004-04-25 14:47:29.858683280 +0200
+@@ -8,7 +8,7 @@
+ #include <glibtop.h>
+ #include <glibtop/open.h>
+ #include <glibtop/close.h>
+-#include <glibtop/xmalloc.h>
++//#include <glibtop/xmalloc.h>
+ #include <glibtop/parameter.h>
+ #include <glibtop/union.h>
+ #include <glibtop/sysdeps.h>
+@@ -305,7 +305,7 @@
+ 	XPUSHs(sve);
+     }
+     else {
+-	glibtop_free(entry);
++	g_free(entry);
+     }
+ 
+ void
+@@ -338,7 +338,7 @@
+ 	}
+ 	XPUSHs(sv_2mortal(newRV_noinc((SV*)av)));
+     }
+-    glibtop_free(ptr);
++    g_free(ptr);
+ 
+ void
+ proc_args(gtop, pid, arg=0)
+@@ -377,7 +377,7 @@
+ 	XPUSHs(sv_2mortal(newRV_noinc((SV*)av)));
+     }
+ 
+-    glibtop_free(pargs);
++    g_free(pargs);
+ 
+ void
+ proc_map(gtop, pid)
+@@ -404,7 +404,7 @@
+ 	XPUSHs(sve);
+     }
+     else {
+-	glibtop_free(entry);
++	g_free(entry);
+     }
+ 
+ MODULE = GTop   PACKAGE = GTop::Mountentry   PREFIX = Mountlist_
+@@ -414,7 +414,7 @@
+     GTop::Mountentry entries
+ 
+     CODE:
+-    glibtop_free(entries);
++    g_free(entries);
+ 
+ #define Mountlist_devname(entries, idx) entries[idx].devname
+ #define Mountlist_type(entries, idx) entries[idx].type
+@@ -448,7 +448,7 @@
+     GTop::MapEntry entries
+ 
+     CODE:
+-    glibtop_free(entries);
++    g_free(entries);
+ 
+ char *
+ perm_string(entries, idx)
+diff -ur GTop-0.12/Server/daemon.h GTop-0.12.new/Server/daemon.h
+--- GTop-0.12/Server/daemon.h	2003-01-27 09:20:20.000000000 +0100
++++ GTop-0.12.new/Server/daemon.h	2004-04-25 14:47:29.842685712 +0200
+@@ -30,7 +30,7 @@
+ 
+ #include <glibtop/open.h>
+ #include <glibtop/union.h>
+-#include <glibtop/xmalloc.h>
++//#include <glibtop/xmalloc.h>
+ #include <glibtop/version.h>
+ #include <glibtop/command.h>
+ #include <glibtop/parameter.h>
+@@ -43,7 +43,7 @@
+ #include "access.h"
+ #include "server_config.h"
+ 
+-BEGIN_LIBGTOP_DECLS
++G_BEGIN_DECLS
+ 
+ /* Some don't have LOG_PERROR */
+ #ifndef LOG_PERROR
+@@ -79,6 +79,6 @@
+ void syslog_message (int priority, char *format, ...);
+ void syslog_io_message (int priority, char *format, ...);
+ 
+-END_LIBGTOP_DECLS
++G_END_DECLS
+ 
+ #endif
+diff -ur GTop-0.12/Server/gnuserv.c GTop-0.12.new/Server/gnuserv.c
+--- GTop-0.12/Server/gnuserv.c	2003-01-27 09:17:39.000000000 +0100
++++ GTop-0.12.new/Server/gnuserv.c	2004-04-25 14:47:29.841685864 +0200
+@@ -46,7 +46,7 @@
+ #include <glibtop/open.h>
+ #include <glibtop/close.h>
+ #include <glibtop/command.h>
+-#include <glibtop/xmalloc.h>
++//#include <glibtop/xmalloc.h>
+ 
+ #include <glibtop/parameter.h>
+ 
+diff -ur GTop-0.12/Server/main.c GTop-0.12.new/Server/main.c
+--- GTop-0.12/Server/main.c	2003-01-27 09:20:20.000000000 +0100
++++ GTop-0.12.new/Server/main.c	2004-04-25 14:47:29.842685712 +0200
+@@ -140,7 +140,8 @@
+ 					  param_ptr [1]);
+ 	    do_output (s, resp, _offset_data (proclist),
+ 		       resp->u.data.proclist.total, ptr);
+-	    glibtop_free_r (server, ptr);
++//	    glibtop_free_r (server, ptr);
++	    g_free(ptr);
+ 	    break;
+ 	case GLIBTOP_CMND_PROC_MAP:
+ 	    memcpy (&pid, parameter, sizeof (pid_t));
+@@ -149,7 +150,8 @@
+ 					  pid);
+ 	    do_output (s, resp, _offset_data (proc_map),
+ 		       resp->u.data.proc_map.total, ptr);
+-	    glibtop_free_r (server, ptr);
++//	    glibtop_free_r (server, ptr);
++	    g_free(ptr);
+ 	    break;
+ 	case GLIBTOP_CMND_PROC_ARGS:
+ 	    memcpy (&pid, parameter, sizeof (pid_t));
+@@ -158,7 +160,8 @@
+ 					   pid, 0);
+ 	    do_output (s, resp, _offset_data (proc_args),
+ 		       ptr ? resp->u.data.proc_args.size+1 : 0, ptr);
+-	    glibtop_free_r (server, ptr);
++//	    glibtop_free_r (server, ptr);
++	    g_free(ptr);
+ 	    break;
+ 	case GLIBTOP_CMND_PROC_STATE:
+ 	    memcpy (&pid, parameter, sizeof (pid_t));
+@@ -205,10 +208,11 @@
+ 	case GLIBTOP_CMND_MOUNTLIST:
+ 	    memcpy (&all_fs, parameter, sizeof (all_fs));
+ 	    mount_list = glibtop_get_mountlist_l
+-		(server, &resp->u.data.mountlist, all_fs);
++		       (server, &resp->u.data.mountlist, all_fs);
+ 	    do_output (s, resp, _offset_data (mountlist),
+ 		       resp->u.data.mountlist.total, mount_list);
+-	    glibtop_free_r (server, mount_list);
++//	    glibtop_free_r (server, mount_list);
++	    g_free(ptr);
+ 	    break;
+ 	case GLIBTOP_CMND_FSUSAGE:
+ 	    glibtop_get_fsusage_l
