@@ -39,7 +39,7 @@ http://www.cpan.org/modules/by-module/Apache/
 GTOP_LIB="`pkg-config --libs libgtop-2.0`" \
 GTOP_INCLUDE="`pkg-config --cflags libgtop-2.0`" \
 %{__perl} Makefile.PL \
-	INSTALLDIRS=vendor 
+	INSTALLDIRS=vendor
 
 %{__make} \
 	OPTIMIZE="%{rpmcflags}" \
