@@ -4,7 +4,7 @@
 			# require /proc access
 #
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	GTop
+%define		pdir	GTop
 Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
