@@ -36,7 +36,7 @@ http://www.cpan.org/modules/by-module/Apache/
 %build
   GTOP_LIB=`libgtop-config --libs | perl -we '<>=~/^-L(\S+)/&&print $1'` \
   GTOP_INCLUDE=`libgtop-config --cflags | perl -we '<>=~/^-I(\S+)/&&print $1'` \
-perl Makefile.PL
+%{__perl} Makefile.PL
 
 %{__make} OPTIMIZE="%{rpmcflags}"
 
