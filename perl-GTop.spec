@@ -1,6 +1,7 @@
 #
 # Conditional build:
-# _without_tests - do not perform "make test"
+%bcond_without	tests	# do not perform "make test"
+#
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	GTop
 Summary:	GTop - Perl interface to libgtop
@@ -46,7 +47,7 @@ GTOP_INCLUDE="`pkg-config --cflags libgtop-2.0`" \
 	INC="`pkg-config --cflags libgtop-2.0`" \
 	EXTRALIBS="`pkg-config --libs libgtop-2.0`"
 
-%{!?_without_tests:%{__make} test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
