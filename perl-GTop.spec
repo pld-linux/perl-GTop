@@ -8,14 +8,13 @@
 Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
-Version:	0.12
-Release:	3
+Version:	0.13
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
-Patch0:		%{name}-xmalloc_h_and_g_free.patch
-# Source0-md5:	9c6ade812379d346e18a2354f39e82b0
+# Source0-md5:	bc2fa8e43fb607a5a64e36b9a2661751
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	perl-devel >= 5.6
 BuildRequires:	pkgconfig
@@ -38,17 +37,12 @@ http://www.cpan.org/modules/by-module/Apache/ .
 
 %prep
 %setup -q -n %{pdir}-%{version}
-%patch0 -p1
 
 %build
-GTOP_LIB="`pkg-config --libs libgtop-2.0`" \
-GTOP_INCLUDE="`pkg-config --cflags libgtop-2.0`" \
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
 %{__make} \
-	OPTIMIZE="%{rpmcflags}" \
-	INC="`pkg-config --cflags libgtop-2.0`" \
-	EXTRALIBS="`pkg-config --libs libgtop-2.0`"
+	OPTIMIZE="%{rpmcflags}"
 
 %{?with_tests:%{__make} test}
 
