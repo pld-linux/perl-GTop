@@ -7,14 +7,13 @@ Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTOP - perlowy interfejs do libgtop
 Name:		perl-GTop
 Version:	0.10
-Release:	1
+Release:	2
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
 BuildRequires:	perl >= 5.6
 BuildRequires:	rpm-perlprov >= 3.0.3-26
 BuildRequires:	libgtop-devel
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
