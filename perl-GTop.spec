@@ -4,7 +4,7 @@
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	GTop
 Summary:	GTop - Perl interface to libgtop
-Summary(pl):	GTOP - perlowy interfejs do libgtop
+Summary(pl):	GTop - perlowy interfejs do libgtop
 Name:		perl-GTop
 Version:	0.10
 Release:	5
@@ -12,8 +12,9 @@ License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
 # Source0-md5:	1920b8105003c46031000ae16e859a41
-BuildRequires:	libgtop-devel
+BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	perl-devel >= 5.6
+BuildRequires:	pkgconfig
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,12 +36,15 @@ http://www.cpan.org/modules/by-module/Apache/
 %setup -q -n %{pdir}-%{version}
 
 %build
-  GTOP_LIB="-lgtop-2.0 -lgtop_sysdeps-2.0 -lgtop_common-2.0" \
-  GTOP_INCLUDE="/usr/include/libgtop-2.0" \
+GTOP_LIB="`pkg-config --libs libgtop-2.0`" \
+GTOP_INCLUDE="`pkg-config --cflags libgtop-2.0`" \
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor 
 
-%{__make} OPTIMIZE="%{rpmcflags}"
+%{__make} \
+	OPTIMIZE="%{rpmcflags}" \
+	INC="`pkg-config --cflags libgtop-2.0`" \
+	EXTRALIBS="`pkg-config --libs libgtop-2.0`"
 
 %{!?_without_tests:%{__make} test}
 
