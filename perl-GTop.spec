@@ -9,7 +9,8 @@ Summary(pl):	GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
 Version:	0.12
 Release:	1
-License:	GPL/Artistic
+# same as perl
+License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
 # Source0-md5:	9c6ade812379d346e18a2354f39e82b0
