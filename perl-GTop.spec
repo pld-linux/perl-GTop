@@ -42,7 +42,6 @@ GTOP_LIB="`pkg-config --libs libgtop-2.0`" \
 GTOP_INCLUDE="`pkg-config --cflags libgtop-2.0`" \
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
-
 %{__make} \
 	OPTIMIZE="%{rpmcflags}" \
 	INC="`pkg-config --cflags libgtop-2.0`" \
@@ -53,7 +52,8 @@ GTOP_INCLUDE="`pkg-config --cflags libgtop-2.0`" \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
