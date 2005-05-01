@@ -23,17 +23,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This package is a Perl interface to libgtop:
-http://home-of-linux.org/gnome/libgtop/ .
+<http://home-of-linux.org/gnome/libgtop/>.
 
 See also: Stas Bekman's Apache::VMonitor
-http://www.cpan.org/modules/by-module/Apache/ .
+<http://www.cpan.org/modules/by-module/Apache/>.
 
 %description -l pl
 Ten pakiet jest perlowym interfejsem do libgtop:
-http://home-of-linux.org/gnome/libgtop/ .
+<http://home-of-linux.org/gnome/libgtop/>.
 
 Warto zobaczyæ tak¿e Apache::VMonitor Stasa Bekmana:
-http://www.cpan.org/modules/by-module/Apache/ .
+<http://www.cpan.org/modules/by-module/Apache/>.
 
 %prep
 %setup -q -n %{pdir}-%{version}
