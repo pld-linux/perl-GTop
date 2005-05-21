@@ -1,0 +1,20 @@
+--- GTop-0.15/Server/daemon.h~	2005-05-21 21:39:54.000000000 +0200
++++ GTop-0.15/Server/daemon.h	2005-05-21 21:39:54.000000000 +0200
+@@ -25,7 +25,6 @@
+ #define __GLIBTOP_DAEMON_H__
+ 
+ #include <glibtop.h>
+-#include <glibtop/error.h>
+ #include <glibtop/gnuserv.h>
+ 
+ #include <glibtop/open.h>
+--- GTop-0.15/Server/version.c~	2005-05-21 21:42:12.000000000 +0200
++++ GTop-0.15/Server/version.c	2005-05-21 21:42:12.000000000 +0200
+@@ -23,7 +23,6 @@
+ 
+ #include <glibtop.h>
+ #include <glibtop/command.h>
+-#include <glibtop/error.h>
+ #include <glibtop/version.h>
+ 
+ #if 0
