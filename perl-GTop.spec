@@ -9,7 +9,7 @@ Summary:	GTop - Perl interface to libgtop
 Summary(pl):	GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
 Version:	0.13
-Release:	2
+Release:	3
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
