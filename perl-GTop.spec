@@ -6,7 +6,7 @@
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	GTop
 Summary:	GTop - Perl interface to libgtop
-Summary(pl):	GTop - interfejs perlowy do libgtop
+Summary(pl.UTF-8):   GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
 Version:	0.15
 Release:	1
@@ -29,11 +29,11 @@ This package is a Perl interface to libgtop:
 See also: Stas Bekman's Apache::VMonitor
 <http://www.cpan.org/modules/by-module/Apache/>.
 
-%description -l pl
+%description -l pl.UTF-8
 Ten pakiet jest perlowym interfejsem do libgtop:
 <http://home-of-linux.org/gnome/libgtop/>.
 
-Warto zobaczyæ tak¿e Apache::VMonitor Stasa Bekmana:
+Warto zobaczyÄ‡ takÅ¼e Apache::VMonitor Stasa Bekmana:
 <http://www.cpan.org/modules/by-module/Apache/>.
 
 %prep
