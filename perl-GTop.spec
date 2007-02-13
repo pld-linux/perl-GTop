@@ -6,7 +6,7 @@
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	GTop
 Summary:	GTop - Perl interface to libgtop
-Summary(pl.UTF-8):   GTop - interfejs perlowy do libgtop
+Summary(pl.UTF-8):	GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
 Version:	0.15
 Release:	1
