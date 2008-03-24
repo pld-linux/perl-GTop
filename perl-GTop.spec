@@ -1,7 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests	# perform "make test"
-			# require /proc access
+%bcond_with	tests	# perform "make test" (requires /proc access)
 #
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	GTop
@@ -16,6 +15,7 @@ Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/GTop/%{pdir}-%{version}.tar.gz
 # Source0-md5:	049553661f8ceb7fa93517e8ed68f712
 Patch0:		%{name}-error_h.patch
+URL:		http://search.cpan.org/dist/GTop/
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	pkgconfig
@@ -61,11 +61,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %{perl_vendorarch}/*.pm
-%{perl_vendorarch}/%{pdir}
-%dir %{perl_vendorarch}/auto/%{pdir}
-%attr(755,root,root) %{perl_vendorarch}/auto/%{pdir}/*.so
-%{perl_vendorarch}/auto/%{pdir}/*.bs
-%dir %{perl_vendorarch}/auto/%{pdir}/Server
-%attr(755,root,root) %{perl_vendorarch}/auto/%{pdir}/Server/*.so
-%{perl_vendorarch}/auto/%{pdir}/Server/*.bs
+%{perl_vendorarch}/GTop
+%dir %{perl_vendorarch}/auto/GTop
+%attr(755,root,root) %{perl_vendorarch}/auto/GTop/*.so
+%{perl_vendorarch}/auto/GTop/*.bs
+%dir %{perl_vendorarch}/auto/GTop/Server
+%attr(755,root,root) %{perl_vendorarch}/auto/GTop/Server/*.so
+%{perl_vendorarch}/auto/GTop/Server/*.bs
 %{_mandir}/man3/*
