@@ -7,13 +7,13 @@
 Summary:	GTop - Perl interface to libgtop
 Summary(pl.UTF-8):	GTop - interfejs perlowy do libgtop
 Name:		perl-GTop
-Version:	0.15
-Release:	3
+Version:	0.16
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/GTop/%{pdir}-%{version}.tar.gz
-# Source0-md5:	049553661f8ceb7fa93517e8ed68f712
+# Source0-md5:	c3b1f36c3c9e1031f783027fe1c098d0
 Patch0:		%{name}-error_h.patch
 URL:		http://search.cpan.org/dist/GTop/
 BuildRequires:	libgtop-devel >= 2.0
@@ -61,11 +61,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %{perl_vendorarch}/*.pm
-%{perl_vendorarch}/GTop
 %dir %{perl_vendorarch}/auto/GTop
-%attr(755,root,root) %{perl_vendorarch}/auto/GTop/*.so
-%{perl_vendorarch}/auto/GTop/*.bs
-%dir %{perl_vendorarch}/auto/GTop/Server
-%attr(755,root,root) %{perl_vendorarch}/auto/GTop/Server/*.so
-%{perl_vendorarch}/auto/GTop/Server/*.bs
+%{perl_vendorarch}/auto/GTop/GTop.bs
+%attr(755,root,root) %{perl_vendorarch}/auto/GTop/GTop.so
+%{perl_vendorarch}/config.pl
 %{_mandir}/man3/*
