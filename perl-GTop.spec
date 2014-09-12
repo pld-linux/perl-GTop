@@ -62,7 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{perl_vendorarch}/*.pm
 %dir %{perl_vendorarch}/auto/GTop
-%{perl_vendorarch}/auto/GTop/GTop.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/GTop/GTop.so
 %{perl_vendorarch}/config.pl
 %{_mandir}/man3/*
