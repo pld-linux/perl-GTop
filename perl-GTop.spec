@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_with	tests	# perform "make test" (requires /proc access)
 #
-%include	/usr/lib/rpm/macros.perl
 %define		pdir	GTop
 Summary:	GTop - Perl interface to libgtop
 Summary(pl.UTF-8):	GTop - interfejs perlowy do libgtop
